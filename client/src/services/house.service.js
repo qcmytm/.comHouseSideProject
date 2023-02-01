@@ -1,5 +1,5 @@
 import axios from "axios";
-const API_URL = "http://localhost:7070/api/houses";
+const API_URL = "https://comhouse.onrender.com/api/houses";
 
 class HouseService {
   post(title, description, image, image2, image3, price) {

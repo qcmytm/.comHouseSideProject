@@ -1,5 +1,5 @@
 import axios from "axios";
-const API_URL = "http://localhost:7070/api/user";
+const API_URL = "https://comhouse.onrender.com/api/user";
 
 class AuthService {
   login(email, password) {
