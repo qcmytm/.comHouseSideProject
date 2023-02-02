@@ -69,14 +69,16 @@ const RegisterComponent = () => {
         </div>
         <br />
         <div className="form-group">
-          <label htmlFor="password">身份：</label>
-          <input
+          <label htmlFor="role">身份：</label>
+          <select
+            class="form-select"
+            aria-label="Default select example"
             onChange={handleRole}
-            type="text"
-            className="form-control"
-            placeholder="只能填入houseBuyer或是houseSeller這兩個選項其一"
-            name="role"
-          />
+          >
+            <option selected>請選擇註冊身分:</option>
+            <option value="houseBuyer">houseBuyer</option>
+            <option value="houseSeller">houseSeller</option>
+          </select>
         </div>
         <br />
         <button onClick={handleRegister} className="btn btn-primary">
