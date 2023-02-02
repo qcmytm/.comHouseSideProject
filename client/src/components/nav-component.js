@@ -12,8 +12,8 @@ const NavComponent = ({ currentUser, setCurrentUser }) => {
   return (
     <div>
       <nav>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <div className="container-fluid">
+        <nav className=" navbar navbar-expand-lg navbar-light bg-light">
+          <div className="container-xl">
             <Link className="navbar-brand" to="/">
               .COM房屋
             </Link>
