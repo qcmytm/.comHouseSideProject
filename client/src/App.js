@@ -5,7 +5,7 @@ import HomeComponent from "./components/home-component";
 import RegisterComponent from "./components/register-component";
 import LoginComponent from "./components/login-component";
 import ProfileComponent from "./components/profile-component";
-import AuthService from "../src/services/auth.service";
+import AuthService from "./services/auth.service";
 import HouseComponent from "./components/house-component";
 import PostHouseComponent from "./components/postHouse-component";
 import SearchComponent from "./components/search-component";
