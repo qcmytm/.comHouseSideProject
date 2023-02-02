@@ -37,10 +37,10 @@ const SearchComponent = ({ currentUser, setCurrentUser }) => {
       });
   };
   return (
-    <div style={{ padding: "3rem" }}>
+    <div style={{ padding: "3rem" }} className="container-xl">
       {!currentUser && (
         <div>
-          <p className="fs-2">您必須先登入才能開始預約鑑賞房屋.</p>
+          <p className="fs-2">您必須先登入才能開始預約鑑賞房屋</p>
           <button
             className="btn btn-primary btn-lg"
             onClick={handleTakeToLogin}
@@ -51,7 +51,7 @@ const SearchComponent = ({ currentUser, setCurrentUser }) => {
       )}
       {currentUser && currentUser.user.role == "houseSeller" && (
         <div>
-          <h1>只有houseBuyer才能夠預約鑑賞.</h1>
+          <h1>只有houseBuyer才能夠預約鑑賞</h1>
         </div>
       )}
       {currentUser && currentUser.user.role == "houseBuyer" && (

@@ -36,10 +36,10 @@ const AppointmentComponent = ({ currentUser, setCurrentUser }) => {
       });
   };
   return (
-    <div style={{ padding: "3rem" }}>
+    <div style={{ padding: "3rem" }} className="container-xl">
       {!currentUser && (
         <div>
-          <p className="fs-2">您必須先登入才能開始預約鑑賞房屋.</p>
+          <p className="fs-2">您必須先登入才能開始預約鑑賞房屋</p>
           <button
             className="btn btn-primary btn-lg"
             onClick={handleTakeToLogin}
@@ -50,7 +50,7 @@ const AppointmentComponent = ({ currentUser, setCurrentUser }) => {
       )}
       {currentUser && currentUser.user.role == "houseSeller" && (
         <div>
-          <h1>只有houseBuyer才能夠預約鑑賞.</h1>
+          <h1>只有houseBuyer才能夠預約鑑賞</h1>
         </div>
       )}
       {currentUser &&
@@ -63,7 +63,7 @@ const AppointmentComponent = ({ currentUser, setCurrentUser }) => {
                 <div
                   key={house._id}
                   className="card"
-                  style={{ width: "21rem", margin: "0.5rem" }}
+                  style={{ width: "20rem", margin: "0.5rem" }}
                 >
                   <div className="card-body">
                     <h5 className="card-title">物件名稱:{house.title}</h5>

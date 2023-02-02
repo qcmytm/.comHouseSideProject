@@ -34,10 +34,10 @@ const HouseComponent = ({ currentUser, setCurrentUser }) => {
   }, []);
 
   return (
-    <div style={{ padding: "3rem" }}>
+    <div style={{ padding: "3rem" }} className="container-xl">
       {!currentUser && (
         <div>
-          <p className="fs-2">您必須先登入才能看到委賣物件house.</p>
+          <p className="fs-2">您必須先登入才能看到委賣物件house</p>
           <button
             className="btn btn-primary btn-lg"
             onClick={handleTakeToLogin}
@@ -48,12 +48,12 @@ const HouseComponent = ({ currentUser, setCurrentUser }) => {
       )}
       {currentUser && currentUser.user.role == "houseSeller" && (
         <div>
-          <h1>歡迎來到houseSeller的委賣物件頁面.</h1>
+          <h1>歡迎來到houseSeller的委賣物件頁面</h1>
         </div>
       )}
       {currentUser && currentUser.user.role == "houseBuyer" && (
         <div>
-          <h1>歡迎來到houseBuyer的預約鑑賞頁面.</h1>
+          <h1>歡迎來到houseBuyer的預約鑑賞頁面</h1>
         </div>
       )}
       {currentUser && houseData && houseData.length != 0 && (
@@ -62,7 +62,7 @@ const HouseComponent = ({ currentUser, setCurrentUser }) => {
             return (
               <div
                 className="card"
-                style={{ width: "21rem", margin: "0.5rem" }}
+                style={{ width: "20rem", margin: "0.5rem" }}
               >
                 <div className="card-body">
                   <h5 className="card-title">物件名稱:{house.title}</h5>

@@ -8,7 +8,7 @@ const ProfileComponent = ({ currentUser, setCurrentUser }) => {
   }, []);
 
   return (
-    <div style={{ padding: "3rem" }}>
+    <div style={{ padding: "3rem" }} className="container-xl">
       {!currentUser && <div>在獲取您的個人資料之前，您必須先登錄。</div>}
       {currentUser && (
         <div>
