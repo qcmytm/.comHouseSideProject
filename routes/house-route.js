@@ -115,6 +115,26 @@ router.post("/appointment/:_id", async (req, res) => {
     res.send("預約鑑賞完成");
   }
 });
+//讓houseBuyer透過houseId來  取消  預約
+router.post("/deleteAppointment/:_id", async (req, res) => {
+  console.log("1111");
+  let { _id } = req.params;
+  let result;
+  let house = await House.findOne({ _id });
+  for (let i = 0; i < house.houseBuyerAppointment.length; i++) {
+    if (house.houseBuyerAppointment[i] == req.user._id) {
+      house.houseBuyerAppointment.splice(i, 1);
+      result = true;
+      console.log("3333");
+    }
+  }
+  if (!result) {
+    res.status(403).send("錯誤錯誤,請再嘗試一次謝謝~");
+  } else {
+    await house.save();
+    res.send("取消預約成功");
+  }
+});
 
 //更改委賣物件
 router.patch("/:_id", async (req, res) => {

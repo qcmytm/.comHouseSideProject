@@ -74,7 +74,7 @@ class HouseService {
       },
     });
   }
-
+  //預約鑑賞
   appointment(_id) {
     let token;
     if (localStorage.getItem("user")) {
@@ -91,6 +91,38 @@ class HouseService {
         },
       }
     );
+  }
+  //取消預約deleteAppointment
+  deleteAppointment(_id) {
+    let token;
+    if (localStorage.getItem("user")) {
+      token = JSON.parse(localStorage.getItem("user")).token;
+    } else {
+      token = "";
+    }
+    return axios.post(
+      API_URL + "/deleteAppointment/" + _id,
+      {},
+      {
+        headers: {
+          Authorization: token,
+        },
+      }
+    );
+  }
+
+  deleteObject(_id) {
+    let token;
+    if (localStorage.getItem("user")) {
+      token = JSON.parse(localStorage.getItem("user")).token;
+    } else {
+      token = "";
+    }
+    return axios.delete(API_URL + "/" + _id, {
+      headers: {
+        Authorization: token,
+      },
+    });
   }
 }
 
