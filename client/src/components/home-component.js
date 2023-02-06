@@ -1,9 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import SlideComponent from "./slide-component";
+import FooterComponent from "./footer-component";
 const HomeComponent = () => {
   return (
     <main>
+      <SlideComponent />
       <div className="container-xl py-4">
         <div className="p-5 mb-4 bg-light rounded-3">
           <div className="container-fluid py-5">
@@ -63,11 +65,8 @@ const HomeComponent = () => {
             </div>
           </div>
         </div>
-
-        <footer className="pt-3 mt-4 text-muted border-top">
-          &copy; 2023 qcmytm 
-        </footer>
       </div>
+      <FooterComponent />
     </main>
   );
 };

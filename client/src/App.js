@@ -11,6 +11,7 @@ import PostHouseComponent from "./components/postHouse-component";
 import SearchComponent from "./components/search-component";
 import AboutComponent from "./components/about-component";
 import AppointmentComponent from "./components/appointment-Component";
+import "./assets/css/all.css"
 
 function App() {
   let [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
