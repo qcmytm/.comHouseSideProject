@@ -2,7 +2,10 @@ import React from "react";
 
 const AboutComponent = () => {
   return (
-    <div style={{ padding: "3rem" }} className="container-xl">
+    <div
+      style={{ padding: "3rem", minHeight: "70vh" }}
+      className="container-xl"
+    >
       <h3 style={{ padding: "1.5rem", fontSize: "2.75rem" }}>關於此網頁</h3>
       <p style={{ padding: "0 1.5rem", fontSize: "1.5rem" }}>
         此網頁為個人作品.專案製作,無商業用途

@@ -79,7 +79,10 @@ const HouseComponent = ({ currentUser, setCurrentUser }) => {
       });
   };
   return (
-    <div style={{ padding: "3rem" }} className="container-xl">
+    <div
+      style={{ padding: "3rem", minHeight: "70vh" }}
+      className="container-xl"
+    >
       {!currentUser && (
         <div>
           <p className="fs-2">您必須先登入才能看到委賣物件house</p>

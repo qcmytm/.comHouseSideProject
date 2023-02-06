@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import SlideComponent from "./slide-component";
-import FooterComponent from "./footer-component";
+
 const HomeComponent = () => {
   return (
-    <main>
+    <main >
       <SlideComponent />
       <div className="container-xl py-4">
         <div className="p-5 mb-4 bg-light rounded-3">
@@ -38,7 +38,7 @@ const HomeComponent = () => {
                   style={{ textDecoration: "none", color: "white" }}
                   to="/register"
                 >
-                  登錄會員、或者註冊一個帳號
+                  登錄會員或註冊一個帳號
                 </Link>
               </button>
             </div>
@@ -66,7 +66,6 @@ const HomeComponent = () => {
           </div>
         </div>
       </div>
-      <FooterComponent />
     </main>
   );
 };

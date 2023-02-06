@@ -2,13 +2,15 @@ import { useState, useEffect } from "react";
 import AuthService from "../services/auth.service";
 
 const ProfileComponent = ({ currentUser, setCurrentUser }) => {
-  
   useEffect(() => {
     setCurrentUser(AuthService.getCurrentUser());
   }, []);
 
   return (
-    <div style={{ padding: "3rem" }} className="container-xl">
+    <div
+      style={{ padding: "3rem", minHeight: "70vh" }}
+      className="container-xl"
+    >
       {!currentUser && <div>在獲取您的個人資料之前，您必須先登錄。</div>}
       {currentUser && (
         <div>
