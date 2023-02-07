@@ -18,6 +18,7 @@ Node(.js) — the premier JavaScript web server（後端伺服器）<br/>
   -房屋物件中也提供委賣Seller聯繫方式如有任何疑問也可以請教。<br/>
   -House物件頁面:提供Buyer<預約鑑賞中>的房屋物件以供Buyer確認，如有任何異動此頁面也提供<取消預約>服務。<br/>
   <br/>
+
 4.身份為Seller:<br/>
   -成為.com Seler即可 製作委賣物件上架，透過.COM 輕鬆找到目標客群，將您的物件有效地展現在各Buyer面前。<br/>
   -House物件頁面:提供Seller <上架>的所有委賣物件，如有賣出或任何異動也提供<刪除>物件功能。<br/>
@@ -32,3 +33,7 @@ Node(.js) — the premier JavaScript web server（後端伺服器）<br/>
 信箱:a222@gmail.com 密碼:a222222(6個2)<br/>
 <br/>
 render託管服務,<a href="https://comhouse.onrender.com/"> pages</a><br/>
+
+![ezgif com-crop](https://user-images.githubusercontent.com/107973729/217218555-c50dbb5f-5bc3-40f9-b8ad-1bb34364696a.gif)<br/><br/>
+![ezgif com-crop (1)](https://user-images.githubusercontent.com/107973729/217218567-932d487b-1f25-44e8-99ed-d8a6106836a7.gif)<br/><br/>
+![ezgif com-crop (2)](https://user-images.githubusercontent.com/107973729/217222021-7639296c-b8cb-4a53-a0f1-015d4b6a8dee.gif)<br/><br/>
