@@ -34,10 +34,7 @@ const RegisterComponent = () => {
   };
 
   return (
-    <div
-      style={{ padding: "3rem", minHeight: "70vh" }}
-      className="container-xl"
-    >
+    <div className="container-xl divContainer">
       <div>
         {message && <div className="alert alert-danger">{message}</div>}
         <div>

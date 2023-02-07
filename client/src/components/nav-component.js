@@ -13,7 +13,7 @@ const NavComponent = ({ currentUser, setCurrentUser }) => {
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <nav className="container-xl">
         <Link className="navbar-brand" to="/">
-          <img src={sni1} style={{ Width: "100%", height: "30px" }} alt="" />
+          <img src={sni1} className="navImg" alt=".com房屋" />
         </Link>
         <button
           class="navbar-toggler"

@@ -79,18 +79,12 @@ const HouseComponent = ({ currentUser, setCurrentUser }) => {
       });
   };
   return (
-    <div
-      style={{ padding: "3rem", minHeight: "70vh" }}
-      className="container-xl"
-    >
+    <div className="container-xl divContainer">
       {!currentUser && (
         <div>
           <p className="fs-2">您必須先登入才能看到委賣物件house</p>
-          <button
-            className="btn btn-primary btn-lg"
-            onClick={handleTakeToLogin}
-          >
-            回到登入頁面
+          <button className="btn btn-primary btn" onClick={handleTakeToLogin}>
+            跳轉登入頁面
           </button>
         </div>
       )}
@@ -105,49 +99,48 @@ const HouseComponent = ({ currentUser, setCurrentUser }) => {
         </div>
       )}
       {currentUser && houseData && houseData.length != 0 && (
-        <div style={{ display: "flex", flexWrap: "wrap" }}>
+        <div className="house">
           {houseData.map((house) => {
             return (
-              <div
-                className="card"
-                style={{ width: "20rem", margin: "0.5rem" }}
-              >
-                <div className="card-body">
-                  <h5 className="card-title">物件名稱:{house.title}</h5>
-                  <p style={{ margin: "0.5rem 0rem" }}>{house.description}</p>
+              <div className="card house_card">
+                <div className="card-body house_card_dflex">
+                  <div>
+                    <h5 className="card-title">物件名稱:{house.title}</h5>
+                    <p>{house.description}</p>
 
-                  <img src={house.image} class="img-fluid" alt="" />
-                  <img src={house.image2} class="img-fluid" alt="" />
-                  <img src={house.image3} class="img-fluid" alt="" />
-                  <p style={{ margin: "0.5rem 0rem" }}>
-                    預約鑑賞人數:{house.houseBuyerAppointment.length}人
-                  </p>
-                  <p style={{ margin: "0.5rem 0rem" }}>
-                    物件價格:{house.price}(單位:萬元)
-                  </p>
-                  <p style={{ margin: "0.5rem 0rem" }}>
-                    委賣業者:{house.houseSeller.username} <br /> 聯繫方式:
-                    {house.houseSeller.email}
-                  </p>
-                  <div className="d-flex justify-content-end ">
-                    {currentUser && currentUser.user.role == "houseSeller" && (
-                      <button
-                        id={house._id}
-                        className="card-text btn-sm btn-primary "
-                        onClick={handleDelete}
-                      >
-                        刪除物件
-                      </button>
-                    )}
-                    {currentUser && currentUser.user.role == "houseBuyer" && (
-                      <button
-                        id={house._id}
-                        className="card-text btn-sm btn-primary "
-                        onClick={handleDeleteAppointment}
-                      >
-                        取消預約
-                      </button>
-                    )}
+                    <img src={house.image} class="img-fluid" alt="" />
+                    <img src={house.image2} class="img-fluid" alt="" />
+                    <img src={house.image3} class="img-fluid" alt="" />
+                  </div>
+                  <div>
+                    <p>預約鑑賞人數:{house.houseBuyerAppointment.length}人</p>
+                    <p>物件價格:{house.price}(單位:萬元)</p>
+                    <p>
+                      委賣業者:{house.houseSeller.username} <br /> 聯繫方式:
+                      {house.houseSeller.email}
+                    </p>
+
+                    <div className="d-flex justify-content-end ">
+                      {currentUser &&
+                        currentUser.user.role == "houseSeller" && (
+                          <button
+                            id={house._id}
+                            className="card-text btn-sm btn-primary "
+                            onClick={handleDelete}
+                          >
+                            刪除物件
+                          </button>
+                        )}
+                      {currentUser && currentUser.user.role == "houseBuyer" && (
+                        <button
+                          id={house._id}
+                          className="card-text btn-sm btn-primary "
+                          onClick={handleDeleteAppointment}
+                        >
+                          取消預約
+                        </button>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>

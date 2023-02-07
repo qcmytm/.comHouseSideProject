@@ -4,7 +4,7 @@ import SlideComponent from "./slide-component";
 
 const HomeComponent = () => {
   return (
-    <main >
+    <main>
       <SlideComponent />
       <div className="container-xl py-4">
         <div className="p-5 mb-4 bg-light rounded-3">
@@ -21,12 +21,9 @@ const HomeComponent = () => {
           </div>
         </div>
 
-        <div className="row align-items-md-stretch">
+        <div className="row align-items-md-stretch userHouse">
           <div className="col-md-6">
-            <div
-              className="h-100 p-5 text-white rounded-3"
-              style={{ background: "rgb(32 103 174)" }}
-            >
+            <div className="h-100 p-5 text-white rounded-3 buyer">
               <h2>成為HouseBuyer用戶</h2>
               <p>
                 可以任意瀏覽、查詢他們喜歡的房屋物件。
@@ -34,20 +31,12 @@ const HomeComponent = () => {
                 本網站目前僅供預約鑑賞房屋用，請勿提供任何個人資料，例如信用卡號碼。
               </p>
               <button className="btn  btn-outline-secondary" type="button">
-                <Link
-                  style={{ textDecoration: "none", color: "white" }}
-                  to="/register"
-                >
-                  登錄會員或註冊一個帳號
-                </Link>
+                <Link to="/register">登錄會員或註冊一個帳號</Link>
               </button>
             </div>
           </div>
           <div className="col-md-6">
-            <div
-              className="h-100 p-5 border rounded-3"
-              style={{ background: "rgb(244 151 31)" }}
-            >
+            <div className="h-100 p-5 border rounded-3 seller">
               <h2>成為HouseSeller用戶</h2>
               <p>
                 您可以註冊認證成為一位Seller，並開始詳細製作委賣物件上架。
@@ -55,12 +44,7 @@ const HomeComponent = () => {
                 本網站提供優質物件大量的曝光機會,但請勿圖文不符、惡意照騙欺瞞Buyer。
               </p>
               <button className="btn btn-outline-light" type="button">
-                <Link
-                  style={{ textDecoration: "none", color: "black" }}
-                  to="/register"
-                >
-                  立即開始上架委賣物件
-                </Link>
+                <Link to="/register">立即開始上架委賣物件</Link>
               </button>
             </div>
           </div>

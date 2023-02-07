@@ -37,24 +37,18 @@ const SearchComponent = ({ currentUser, setCurrentUser }) => {
       });
   };
   return (
-    <div
-      style={{ padding: "3rem", minHeight: "70vh" }}
-      className="container-xl"
-    >
+    <div className="container-xl divContainer">
       {!currentUser && (
         <div>
-          <p className="fs-2">您必須先登入才能開始預約鑑賞房屋</p>
-          <button
-            className="btn btn-primary btn-lg"
-            onClick={handleTakeToLogin}
-          >
+          <p className="fs-2">您必須先登入才能開始搜尋房屋</p>
+          <button className="btn btn-primary btn" onClick={handleTakeToLogin}>
             跳轉登入頁面
           </button>
         </div>
       )}
       {currentUser && currentUser.user.role == "houseSeller" && (
         <div>
-          <h1>只有houseBuyer才能夠預約鑑賞</h1>
+          <h1>只有houseBuyer才能夠搜尋房屋</h1>
         </div>
       )}
       {currentUser && currentUser.user.role == "houseBuyer" && (
@@ -72,48 +66,41 @@ const SearchComponent = ({ currentUser, setCurrentUser }) => {
       {currentUser && searchResult && searchResult.length != 0 && (
         <div>
           <p>這是我們從伺服器返回的數據:</p>
-          <div style={{ display: "flex", flexWrap: "wrap" }}>
+          <div className="search">
             {searchResult.map((house) => {
               return (
-                <div
-                  key={house._id}
-                  className="card"
-                  style={{
-                    width: "45rem",
-                    margin: "0.5rem",
-                  }}
-                >
-                  <div className="card-body">
-                    <h5 className="card-title">物件名稱:{house.title}</h5>
-                    <p style={{ margin: "0.5rem 0rem" }}>{house.description}</p>
-                    <img src={house.image} class="img-fluid" alt="" />
-                    <img src={house.image2} class="img-fluid" alt="" />
-                    <img src={house.image3} class="img-fluid" alt="" />
-
-                    <p style={{ margin: "0.5rem 0rem" }}>
-                      預約人數:{house.houseBuyerAppointment.length}人
-                    </p>
-                    <p style={{ margin: "0.5rem 0rem" }}>
-                      物件價格:{house.price}(單位:萬元)
-                    </p>
-                    <p style={{ margin: "0.5rem 0rem" }}>
-                      委賣業者:{house.houseSeller.username}
-                      <br /> 聯繫方式:
-                      {house.houseSeller.email}
-                    </p>
-
-                    <a
-                      href="#"
-                      id={house._id}
-                      className="card-text btn btn-primary "
-                      onClick={handleAppointment}
-                    >
-                      預約鑑賞房屋
-                    </a>
+                <div key={house._id} className="card searchHouse">
+                  <div className="card-body house_card_dflex">
+                    <div>
+                      <h5 className="card-title">物件名稱:{house.title}</h5>
+                      <p>{house.description}</p>
+                      <img src={house.image} class="img-fluid" alt="" />
+                      <img src={house.image2} class="img-fluid" alt="" />
+                      <img src={house.image3} class="img-fluid" alt="" />
+                    </div>
+                    <div>
+                      <p>預約人數:{house.houseBuyerAppointment.length}人</p>
+                      <p>物件價格:{house.price}(單位:萬元)</p>
+                      <p>
+                        委賣業者:{house.houseSeller.username}
+                        <br /> 聯繫方式:
+                        {house.houseSeller.email}
+                      </p>
+                      <div className="d-flex justify-content-end ">
+                        <a
+                          href="#"
+                          id={house._id}
+                          className="card-text btn btn-primary "
+                          onClick={handleAppointment}
+                        >
+                          預約鑑賞房屋
+                        </a>
+                      </div>
+                    </div>
                   </div>
                 </div>
               );
-            })}{" "}
+            })}
           </div>
         </div>
       )}

@@ -47,24 +47,18 @@ const PostHouseComponent = (props) => {
   };
 
   return (
-    <div
-      style={{ padding: "3rem", minHeight: "70vh" }}
-      className="container-xl"
-    >
+    <div className="container-xl divContainer">
       {!currentUser && (
         <div>
-          <p>在新增委託物件之前，您必須先登錄。</p>
-          <button
-            className="btn btn-primary btn-lg"
-            onClick={handleTakeToLogin}
-          >
-            跳轉登錄頁面。
+          <p className="fs-2">在新增委託物件之前，您必須先登入</p>
+          <button className="btn btn-primary btn" onClick={handleTakeToLogin}>
+            跳轉登入頁面
           </button>
         </div>
       )}
       {currentUser && currentUser.user.role !== "houseSeller" && (
         <div>
-          <p>只有houseSeller可以新增委託物件。</p>
+          <p className="fs-2">只有houseSeller可以新增委託物件。</p>
         </div>
       )}
       {currentUser && currentUser.user.role == "houseSeller" && (
