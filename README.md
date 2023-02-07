@@ -35,5 +35,4 @@ Node(.js) — the premier JavaScript web server（後端伺服器）<br/>
 render託管服務,<a href="https://comhouse.onrender.com/"> pages</a><br/>
 
 ![ezgif com-crop](https://user-images.githubusercontent.com/107973729/217218555-c50dbb5f-5bc3-40f9-b8ad-1bb34364696a.gif)<br/><br/>
-![ezgif com-crop (1)](https://user-images.githubusercontent.com/107973729/217218567-932d487b-1f25-44e8-99ed-d8a6106836a7.gif)<br/><br/>
-![ezgif com-crop (2)](https://user-images.githubusercontent.com/107973729/217222021-7639296c-b8cb-4a53-a0f1-015d4b6a8dee.gif)<br/><br/>
+
