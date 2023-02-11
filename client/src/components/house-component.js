@@ -12,29 +12,7 @@ const HouseComponent = ({ currentUser, setCurrentUser }) => {
   let [houseData, setHouseData] = useState(null);
   let [deleteHouse, setDeleteHouse] = useState(0);
   let [deleteAppointment, setDeleteAppointment] = useState(0);
-  useEffect(() => {
-    let _id;
-    if (currentUser) {
-      _id = currentUser.user._id;
-      if (currentUser.user.role == "houseSeller") {
-        HouseService.getSellerID(_id)
-          .then((data) => {
-            setHouseData(data.data);
-          })
-          .catch((e) => {
-            console.log(e);
-          });
-      } else if (currentUser.user.role == "houseBuyer") {
-        HouseService.getHouseBuyerAppointment(_id)
-          .then((data) => {
-            setHouseData(data.data);
-          })
-          .catch((e) => {
-            console.log(e);
-          });
-      }
-    }
-  }, []);
+
   useEffect(() => {
     let _id;
     if (currentUser) {
