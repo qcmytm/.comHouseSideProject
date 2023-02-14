@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import AuthService from "../services/auth.service";
 
 const ProfileComponent = ({ currentUser, setCurrentUser }) => {
@@ -16,9 +16,13 @@ const ProfileComponent = ({ currentUser, setCurrentUser }) => {
       {!currentUser && (
         <div>
           <p className="fs-2">在獲取您的個人資料之前，您必須先登入。</p>
-          <button className="btn btn-primary btn" onClick={handleTakeToLogin}>
+          <Link
+            className="btn btn-primary btn"
+            data-bs-toggle="modal"
+            to="#exampleModalToggle"
+          >
             跳轉登入頁面
-          </button>
+          </Link>
         </div>
       )}
       {currentUser && (

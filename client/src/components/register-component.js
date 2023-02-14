@@ -1,14 +1,17 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import AuthService from "../services/auth.service";
 
 const RegisterComponent = () => {
-  const navigate = useNavigate();
   let [username, setUsername] = useState("");
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
   let [role, setRole] = useState("");
   let [message, setMessage] = useState("");
+  const handleNavigate = () => {
+    const navigateButton = document.querySelector(".modal-footer .navigate");
+    console.log(navigateButton);
+    navigateButton.click();
+  };
 
   const handleUsername = (e) => {
     setUsername(e.target.value);
@@ -26,7 +29,12 @@ const RegisterComponent = () => {
     AuthService.register(username, email, password, role)
       .then(() => {
         window.alert("註冊成功.您現在將被導向到登入頁面");
-        navigate("/login");
+        handleNavigate();
+        setUsername("");
+        setEmail("");
+        setPassword("");
+        setRole("");
+        setMessage("");
       })
       .catch((e) => {
         setMessage(e.response.data);
@@ -34,7 +42,7 @@ const RegisterComponent = () => {
   };
 
   return (
-    <div className="container-xl divContainer">
+    <div className="container-xl p-3">
       <div>
         {message && <div className="alert alert-danger">{message}</div>}
         <div>
@@ -44,6 +52,7 @@ const RegisterComponent = () => {
             type="text"
             className="form-control"
             name="username"
+            value={username}
           />
         </div>
         <br />
@@ -54,6 +63,7 @@ const RegisterComponent = () => {
             type="text"
             className="form-control"
             name="email"
+            value={email}
           />
         </div>
         <br />
@@ -64,6 +74,7 @@ const RegisterComponent = () => {
             type="password"
             className="form-control"
             name="password"
+            value={password}
             placeholder="長度至少超過6個英文或數字"
           />
         </div>
@@ -74,6 +85,7 @@ const RegisterComponent = () => {
             class="form-select"
             aria-label="Default select example"
             onChange={handleRole}
+            value={role}
           >
             <option selected>請選擇註冊身分:</option>
             <option value="houseBuyer">houseBuyer</option>
@@ -81,7 +93,10 @@ const RegisterComponent = () => {
           </select>
         </div>
         <br />
-        <button onClick={handleRegister} className="btn btn-primary">
+        <button
+          onClick={handleRegister}
+          className="btn btn-primary ms-auto d-block"
+        >
           <span>註冊會員</span>
         </button>
       </div>

@@ -1,17 +1,16 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
-import Layout from "./components/Layout";
-import HomeComponent from "./components/home-component";
-import RegisterComponent from "./components/register-component";
-import LoginComponent from "./components/login-component";
-import ProfileComponent from "./components/profile-component";
+import Layout from "./Layout";
+import Home from "./pages/home";
+
+import Profile from "./pages/profile";
 import AuthService from "./services/auth.service";
-import HouseComponent from "./components/house-component";
-import PostHouseComponent from "./components/postHouse-component";
+import House from "./pages/house";
+import PostHouse from "./pages/postHouse";
 import SearchComponent from "./components/search-component";
-import AboutComponent from "./components/about-component";
-import AppointmentComponent from "./components/appointment-Component";
-import "./assets/css/all.css"
+import About from "./pages/about";
+import Appointment from "./pages/appointment";
+import "./assets/css/all.css";
 
 function App() {
   let [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
@@ -24,21 +23,11 @@ function App() {
             <Layout currentUser={currentUser} setCurrentUser={setCurrentUser} />
           }
         >
-          <Route index element={<HomeComponent />} />
-          <Route path="register" element={<RegisterComponent />} />
-          <Route
-            path="login"
-            element={
-              <LoginComponent
-                currentUser={currentUser}
-                setCurrentUser={setCurrentUser}
-              />
-            }
-          />
+          <Route index element={<Home />} />
           <Route
             path="profile"
             element={
-              <ProfileComponent
+              <Profile
                 currentUser={currentUser}
                 setCurrentUser={setCurrentUser}
               />
@@ -47,7 +36,7 @@ function App() {
           <Route
             path="house"
             element={
-              <HouseComponent
+              <House
                 currentUser={currentUser}
                 setCurrentUser={setCurrentUser}
               />
@@ -56,7 +45,7 @@ function App() {
           <Route
             path="postHouse"
             element={
-              <PostHouseComponent
+              <PostHouse
                 currentUser={currentUser}
                 setCurrentUser={setCurrentUser}
               />
@@ -74,13 +63,13 @@ function App() {
           <Route
             path="appointment"
             element={
-              <AppointmentComponent
+              <Appointment
                 currentUser={currentUser}
                 setCurrentUser={setCurrentUser}
               />
             }
           />
-          <Route path="about" element={<AboutComponent />} />
+          <Route path="about" element={<About />} />
         </Route>
       </Routes>
     </BrowserRouter>

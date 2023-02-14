@@ -1,71 +1,100 @@
-.navImg {
-  max-width: 100%;
-  height: 30px;
+.bg-white {
+  background-color: rgba(5, 18, 50, 0.9450980392) !important;
 }
 
-.footer img {
-  padding-left: 3rem;
-  height: 88px;
+.navbar-light .navbar-nav .nav-link {
+  color: #FFFAEA;
 }
-@media (max-width: 690px) {
-  .footer img {
-    padding-left: 1rem;
-  }
+
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link:focus {
+  color: rgb(237, 187, 8);
 }
-.footer ul {
-  list-style: none;
-  padding-left: 0;
-}
-.footer .sites_map {
-  width: 27%;
-  display: flex;
-  flex-wrap: wrap;
-}
-@media (max-width: 992px) {
-  .footer .sites_map {
-    width: 33%;
-  }
-}
-@media (max-width: 690px) {
-  .footer .sites_map {
-    display: none;
-  }
-}
-.footer a {
-  color: rgba(0, 0, 0, 0.55);
-  text-decoration: none;
-}
-.footer li {
-  width: 50%;
-  color: rgba(0, 0, 0, 0.55);
-}
-.footer .li_a {
-  width: 100%;
-  color: rgba(0, 0, 0, 0.55);
-  font-weight: bold;
-}
-.footer .contact {
-  width: 27%;
-  display: flex;
-  flex-wrap: wrap;
-}
-@media (max-width: 992px) {
-  .footer .contact {
-    width: 35%;
-  }
-}
-@media (max-width: 690px) {
-  .footer .contact {
-    width: 55%;
-  }
-}
-.footer .contact li {
-  width: 100%;
-  color: rgba(0, 0, 0, 0.55);
+
+.navbar-light .navbar-toggler {
+  color: #FFFAEA;
+  border-color: #FFFAEA;
 }
 
 body {
   overflow-x: hidden;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.navImg {
+  max-width: 100%;
+  height: 40px;
+}
+
+.footer .footerImg {
+  padding: 0 1.5rem;
+  height: 88px;
+}
+@media (min-width: 768px) {
+  .footer .footerImg {
+    padding-left: 3rem;
+  }
+}
+.footer .sitesMap {
+  display: none;
+}
+@media (min-width: 576px) {
+  .footer .sitesMap {
+    width: 38%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+@media (min-width: 768px) {
+  .footer .sitesMap {
+    width: 33%;
+  }
+}
+@media (min-width: 992px) {
+  .footer .sitesMap {
+    width: 27%;
+  }
+}
+.footer .sitesMap_a {
+  color: #FFFAEA;
+  text-decoration: none;
+}
+.footer .sitesMap_a:hover {
+  color: rgb(237, 187, 8);
+}
+.footer .li_top {
+  font-size: 1.3rem;
+  width: 100%;
+  color: #FFFAEA;
+  font-weight: bold;
+}
+.footer .contact {
+  width: 55%;
+  display: flex;
+  flex-wrap: wrap;
+}
+@media (min-width: 576px) {
+  .footer .contact {
+    width: 38%;
+  }
+}
+@media (min-width: 768px) {
+  .footer .contact {
+    width: 32%;
+  }
+}
+@media (min-width: 992px) {
+  .footer .contact {
+    width: 27%;
+  }
+}
+.footer .contact .contact_li {
+  width: 100%;
+  color: #FFFAEA;
 }
 
 .divContainer {
@@ -73,23 +102,60 @@ body {
   min-height: 70vh;
 }
 
-@media (max-width: 690px) {
+.slide {
+  display: none;
+}
+@media (min-width: 576px) {
   .slide {
-    display: none;
+    display: block;
   }
 }
 
-.userHouse .buyer {
+.slideImg {
+  width: 65%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+
+.mainBG {
+  background-image: url("https://pic03.eapple.com.tw/yuanchu/about-01.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  z-index: 0;
+}
+
+.mainBG ::before {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.225);
+}
+
+.textShadow {
+  text-shadow: 0 0 black;
+}
+
+.userHouse .seller {
   background: rgb(32, 103, 174);
 }
-.userHouse .buyer a {
+.userHouse .seller a {
   text-decoration: none;
   color: white;
 }
-.userHouse .seller {
-  background: rgb(244, 151, 31);
+.userHouse .buyer {
+  background: rgb(237, 161, 8);
+  color: white;
 }
-.userHouse .seller a {
+.userHouse .buyer a {
   text-decoration: none;
   color: black;
 }

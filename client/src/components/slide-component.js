@@ -4,6 +4,28 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const SlideComponent = () => {
+  const Image = [
+    {
+      key: 1,
+      url: "https://img1.591.com.tw/house/2022/05/12/165232205584522700.jpg!660x495.water3.jpg",
+    },
+    {
+      key: 2,
+      url: "https://img2.591.com.tw/house/2022/09/12/166294537295818001.jpg!660x495.water3.jpg",
+    },
+    {
+      key: 3,
+      url: "https://img2.591.com.tw/house/2022/03/04/164638560846912004.jpg!660x495.water3.jpg",
+    },
+    {
+      key: 4,
+      url: "https://img1.591.com.tw/house/2020/08/07/159677853397871007.jpg!660x495.water3.jpg",
+    },
+    {
+      key: 5,
+      url: "https://img1.591.com.tw/house/2022/12/22/167169984290586602.jpg!660x495.water3.jpg",
+    },
+  ];
   const settings = {
     dots: true,
     infinite: true,
@@ -15,38 +37,15 @@ const SlideComponent = () => {
     cssEase: "linear",
   };
   return (
-    <div className="slide">
+    <div className="d-none d-sm-block ">
       <Slider {...settings}>
-        <div className="d-flex justify-content-center">
-          <img
-            src="https://img1.591.com.tw/house/2022/05/12/165232205584522700.jpg!660x495.water3.jpg"
-            alt=""
-          />
-        </div>
-        <div className="d-flex justify-content-center">
-          <img
-            src="https://img2.591.com.tw/house/2022/09/12/166294537295818001.jpg!660x495.water3.jpg"
-            alt=""
-          />
-        </div>
-        <div className="d-flex justify-content-center">
-          <img
-            src="https://img2.591.com.tw/house/2022/03/04/164638560846912004.jpg!660x495.water3.jpg"
-            alt=""
-          />
-        </div>
-        <div className="d-flex justify-content-center">
-          <img
-            src="https://img1.591.com.tw/house/2020/08/07/159677853397871007.jpg!660x495.water3.jpg"
-            alt=""
-          />
-        </div>
-        <div className="d-flex justify-content-center">
-          <img
-            src="https://img1.591.com.tw/house/2022/12/22/167169984290586602.jpg!660x495.water3.jpg"
-            alt=""
-          />
-        </div>
+        {Image.map((i) => {
+          return (
+            <div className="d-flex justify-content-center">
+              <img src={i.url} className="slideImg" alt="img" />
+            </div>
+          );
+        })}
       </Slider>
     </div>
   );

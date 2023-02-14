@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import sni1 from "../assets/images/Sni1.png";
+import sni1 from "../assets/images/group197.png";
 import AuthService from "../services/auth.service";
+import UserModalComponent from "./UserModal-component.js";
+import UserImg from "../assets/images/User.png";
 
 const NavComponent = ({ currentUser, setCurrentUser }) => {
   const handleLogout = () => {
@@ -10,11 +12,15 @@ const NavComponent = ({ currentUser, setCurrentUser }) => {
     setCurrentUser(null);
   };
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-md navbar-light bg-white">
       <nav className="container-xl">
-        <Link className="navbar-brand" to="/">
+        <Link className="navbar-brand py-0" to="/">
           <img src={sni1} className="navImg" alt=".com房屋" />
         </Link>
+        <UserModalComponent
+          currentUser={currentUser}
+          setCurrentUser={setCurrentUser}
+        />
         <button
           class="navbar-toggler"
           type="button"
@@ -24,28 +30,25 @@ const NavComponent = ({ currentUser, setCurrentUser }) => {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <i class="fa-solid fa-bars"></i>
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav">
+          <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <Link className="nav-link active" to="/">
+              <Link className="nav-link" to="/">
                 首頁
               </Link>
             </li>
 
             {!currentUser && (
               <li className="nav-item">
-                <Link className="nav-link" to="/register">
-                  註冊會員
-                </Link>
-              </li>
-            )}
-
-            {!currentUser && (
-              <li className="nav-item">
-                <Link className="nav-link" to="/login">
-                  會員登入
+                <Link
+                  className="nav-link"
+                  data-bs-toggle="modal"
+                  to="#exampleModalToggle"
+                >
+                  <img src={UserImg} style={{ height: "25px" }} alt="user" />{" "}
+                  登入/註冊會員
                 </Link>
               </li>
             )}
@@ -74,7 +77,7 @@ const NavComponent = ({ currentUser, setCurrentUser }) => {
               </li>
             )}
 
-            {currentUser && currentUser.user.role == "houseSeller" && (
+            {currentUser && currentUser.user.role === "houseSeller" && (
               <li className="nav-item">
                 <Link className="nav-link" to="/postHouse">
                   新增委賣物件
@@ -82,14 +85,14 @@ const NavComponent = ({ currentUser, setCurrentUser }) => {
               </li>
             )}
 
-            {currentUser && currentUser.user.role == "houseBuyer" && (
+            {currentUser && currentUser.user.role === "houseBuyer" && (
               <li className="nav-item">
                 <Link className="nav-link" to="/appointment">
                   預約鑑賞房屋
                 </Link>
               </li>
             )}
-            {currentUser && currentUser.user.role == "houseBuyer" && (
+            {currentUser && currentUser.user.role === "houseBuyer" && (
               <li className="nav-item">
                 <Link className="nav-link" to="/search">
                   搜尋房屋

@@ -1,73 +1,75 @@
-.navImg{
+.navImg {
     max-width: 100%;
-    height: 30px;
+    height: 40px;
 }
 
 .footer {
-    img {
-
-        padding-left: 3rem;
+    .footerImg {
+        padding: 0 1.5rem;
         height: 88px;
 
-        @media (max-width:690px) {
-            padding-left: 1rem;
+        @media (min-width:768px) {
+            padding-left: 3rem;
         }
     }
 
-    ul {
-        list-style: none;
-        padding-left: 0;
-    }
 
-    .sites_map {
-        width: 27%;
-        display: flex;
-        flex-wrap: wrap;
+    .sitesMap {
+        display: none;
 
-        @media(max-width:992px) {
+        @media (min-width:576px) {
+            width: 38%;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        @media (min-width:768px) {
             width: 33%;
         }
 
-        @media (max-width:690px) {
-            display: none;
+        @media(min-width:992px) {
+            width: 27%;
         }
-
     }
 
-    a {
-        color: rgba(0, 0, 0, .55);
+    .sitesMap_a {
+        color: $HFcolor;
         text-decoration: none;
+
+        &:hover {
+            color: $HFcolor-hover;
+        }
     }
 
-    li {
-        width: 50%;
-        color: rgba(0, 0, 0, .55);
-    }
-
-
-
-    .li_a {
+    .li_top {
+        font-size: 1.3rem;
         width: 100%;
-        color: rgba(0, 0, 0, .55);
+        color: $HFcolor ;
         font-weight: bold;
     }
 
     .contact {
-        width: 27%;
+        width: 55%;
         display: flex;
         flex-wrap: wrap;
 
-        @media(max-width:992px) {
-            width: 35%;
+        @media (min-width:576px) {
+            width: 38%;
         }
 
-        @media (max-width:690px) {
-            width: 55%;
+        @media (min-width:768px) {
+            width: 32%;
         }
 
-        li {
+        @media(min-width:992px) {
+            width: 27%;
+        }
+
+
+
+        .contact_li {
             width: 100%;
-            color: rgba(0, 0, 0, .55);
+            color: $HFcolor;
         }
     }
 }

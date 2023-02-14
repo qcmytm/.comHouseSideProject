@@ -1,21 +1,24 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import HouseService from "../services/house.service";
 const SearchComponent = ({ currentUser, setCurrentUser }) => {
   const navigate = useNavigate();
   let [searchInput, setSearchInput] = useState("");
   let [searchResult, setSearchResult] = useState(null);
-  const handleTakeToLogin = () => {
-    navigate("/login");
-  };
+
   const handleChangeInput = (e) => {
     setSearchInput(e.target.value);
   };
   const handleSearch = (e) => {
     HouseService.getHouseByName(searchInput)
       .then((data) => {
-        console.log(data.data);
-        setSearchResult(data.data);
+        if (data.data.length === 0) {
+          window.alert(
+            "此物件名稱有誤，找不到相關物件(請務必填寫完整名稱搜尋)"
+          );
+        } else {
+          setSearchResult(data.data);
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -41,17 +44,21 @@ const SearchComponent = ({ currentUser, setCurrentUser }) => {
       {!currentUser && (
         <div>
           <p className="fs-2">您必須先登入才能開始搜尋房屋</p>
-          <button className="btn btn-primary btn" onClick={handleTakeToLogin}>
+          <Link
+            className="btn btn-primary btn"
+            data-bs-toggle="modal"
+            to="#exampleModalToggle"
+          >
             跳轉登入頁面
-          </button>
+          </Link>
         </div>
       )}
-      {currentUser && currentUser.user.role == "houseSeller" && (
+      {currentUser && currentUser.user.role === "houseSeller" && (
         <div>
           <h1>只有houseBuyer才能夠搜尋房屋</h1>
         </div>
       )}
-      {currentUser && currentUser.user.role == "houseBuyer" && (
+      {currentUser && currentUser.user.role === "houseBuyer" && (
         <div className="search input-group mb-3">
           <input
             type="text"
@@ -63,7 +70,7 @@ const SearchComponent = ({ currentUser, setCurrentUser }) => {
           </button>
         </div>
       )}
-      {currentUser && searchResult && searchResult.length != 0 && (
+      {currentUser && searchResult && searchResult.length !== 0 && (
         <div>
           <p>這是我們從伺服器返回的數據:</p>
           <div className="search">

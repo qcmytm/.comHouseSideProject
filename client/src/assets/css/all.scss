@@ -1,88 +1,120 @@
+@import "variable";
+@import "base";
 @import "layout";
 
-body {
-    overflow-x: hidden;
-}
 
 .divContainer {
-    padding: 3rem;
-    min-height: 70vh;
+  padding: 3rem;
+  min-height: 70vh;
 }
 
 .slide {
 
+  display: none;
 
-    @media (max-width:690px) {
-        display: none;
-    }
+  @media (min-width: 576px) {
+    display: block;
+  }
+}
+
+.slideImg {
+  width: 65%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+
+}
+
+.mainBG {
+  background-image: url("https://pic03.eapple.com.tw/yuanchu/about-01.jpg");
+  background-size: cover;
+
+  background-position: center;
+  position: relative;
+  z-index: 0;
+}
+
+.mainBG ::before {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.225)
+    /* 设置透明度 */
+}
+
+.textShadow {
+  text-shadow: 0 0 black
 }
 
 
 .userHouse {
-    .buyer {
-        background: rgb(32 103 174);
+  .seller {
+    background: rgb(32 103 174);
 
-        a {
-            text-decoration: none;
-            color: white;
-        }
+    a {
+      text-decoration: none;
+      color: white;
     }
+  }
 
-    .seller {
-        background: rgb(244 151 31);
+  .buyer {
+    background: rgb(237, 161, 8);
+    color: white;
 
-        a {
-            text-decoration: none;
-            color: black;
-        }
+    a {
+      text-decoration: none;
+      color: black;
     }
+  }
 }
 
-
-
 .house {
+  display: flex;
+  flex-wrap: wrap;
+
+  .house_card {
+    width: 20rem;
+    margin: 0.5rem;
+  }
+
+  .house_card_dflex {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 
-    .house_card {
-        width: 20rem;
-        margin: 0.5rem;
-    }
-
-    .house_card_dflex {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-
-    p {
-        margin: 0.5rem 0;
-    }
-
+  p {
+    margin: 0.5rem 0;
+  }
 }
 
 .search {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 
-    .searchHouse {
-        width: 45rem;
-        margin: 0.5rem;
-    }
+  .searchHouse {
+    width: 45rem;
+    margin: 0.5rem;
+  }
 
-    p {
-        margin: 0.5rem 0;
-    }
+  p {
+    margin: 0.5rem 0;
+  }
 }
 
 .aboutWeb {
-    h3 {
-        padding: 1.5rem;
-        font-size: 2.75rem;
-    }
+  h3 {
+    padding: 1.5rem;
+    font-size: 2.75rem;
+  }
 
-    p {
-        padding: 0 1.5rem;
-        font-size: 1.5rem;
-    }
+  p {
+    padding: 0 1.5rem;
+    font-size: 1.5rem;
+  }
 }

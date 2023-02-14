@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 import HouseService from "../services/house.service";
 
@@ -61,9 +61,13 @@ const HouseComponent = ({ currentUser, setCurrentUser }) => {
       {!currentUser && (
         <div>
           <p className="fs-2">您必須先登入才能看到委賣物件house</p>
-          <button className="btn btn-primary btn" onClick={handleTakeToLogin}>
+          <Link
+            className="btn btn-primary btn"
+            data-bs-toggle="modal"
+            to="#exampleModalToggle"
+          >
             跳轉登入頁面
-          </button>
+          </Link>
         </div>
       )}
       {currentUser && currentUser.user.role == "houseSeller" && (
