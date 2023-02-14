@@ -34,7 +34,5 @@ Node(.js) — the premier JavaScript web server（後端伺服器）<br/>
 <br/>
 因使用render免費託管服務,平時無request時會處於待機模式,點擊網站進入時server需運行一段時間重啟才能run server,謝謝等候
 <h3> render託管服務,<a href="https://comhouse.onrender.com/">網站頁面</a> </h3>
-<br/>
-![ezgif com-crop](https://user-images.githubusercontent.com/107973729/218751449-cb287ba1-7b61-4cbe-ad6a-24b163e85ab8.gif)<br/>
 
-
+![ezgif com-crop](https://user-images.githubusercontent.com/107973729/218757231-4e484d20-4341-4836-91a3-460d6f925269.gif)
