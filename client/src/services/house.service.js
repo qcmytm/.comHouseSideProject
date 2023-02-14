@@ -1,5 +1,5 @@
 import axios from "axios";
-const API_URL = "https://com-house.onrender.com/api/houses";
+const API_URL = "https://comhouse.onrender.com/api/houses";
 
 class HouseService {
   post(title, description, image, image2, image3, price) {
