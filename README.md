@@ -30,7 +30,9 @@ Node(.js) — the premier JavaScript web server（後端伺服器）<br/>
 信箱:s222@gmail.com 密碼:s222222(6個2)<br/>
 測試帳號Buyer:<br/>
 信箱:a111@gmail.com 密碼:a111111(6個1)<br/>
-信箱:a222@gmail.com 密碼:a222222(6個2)
+信箱:a222@gmail.com 密碼:a222222(6個2)<br/>
+<br/>
+因使用render免費託管服務,平時無request時會處於待機模式,點擊網站進入時server需運行一段時間重啟才能run server,謝謝等候
 <h3> render託管服務,<a href="https://comhouse.onrender.com/">網站頁面</a> </h3>
 
 ![ezgif com-crop](https://user-images.githubusercontent.com/107973729/218751449-cb287ba1-7b61-4cbe-ad6a-24b163e85ab8.gif)<br/>
