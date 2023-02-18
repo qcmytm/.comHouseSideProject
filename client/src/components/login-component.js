@@ -7,6 +7,7 @@ const LoginComponent = ({ setCurrentUser }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const handleClose = () => {
     const closeButton = document.querySelector(".btn-close");
     closeButton.click();
@@ -16,7 +17,7 @@ const LoginComponent = ({ setCurrentUser }) => {
       let response = await AuthService.login(email, password);
       localStorage.setItem("user", JSON.stringify(response.data));
       setCurrentUser(AuthService.getCurrentUser());
-      window.alert("登入成功.您現在將被重新導向到個人資料頁面.");
+      setIsLoggedIn(true);
       navigate("/profile");
       handleClose();
       setEmail("");
@@ -37,6 +38,11 @@ const LoginComponent = ({ setCurrentUser }) => {
     <div className="container-xl p-5">
       <div>
         {message && <div className="alert alert-danger">{message}</div>}
+        {isLoggedIn && (
+          <div>
+            <p>Login successful!</p>
+          </div>
+        )}
         <div className="form-group">
           <label htmlFor="username">電子信箱：</label>
           <input
