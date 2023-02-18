@@ -5,6 +5,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 const authRoute = require("./routes").auth;
 const houseRoute = require("./routes").house;
+const findHouseRoute = require("./routes").findHouse;
 const passport = require("passport");
 require("./config/passport")(passport);
 const cors = require("cors");
@@ -39,6 +40,7 @@ app.use(
   passport.authenticate("jwt", { session: false }),
   houseRoute
 );
+app.use("/api/findHouseByName", findHouseRoute);
 
 if (
   process.env.NODE_ENV === "production" ||

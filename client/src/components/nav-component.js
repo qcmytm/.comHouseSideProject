@@ -39,7 +39,6 @@ const NavComponent = ({ currentUser, setCurrentUser }) => {
                 首頁
               </Link>
             </li>
-
             {!currentUser && (
               <li className="nav-item">
                 <Link
@@ -52,7 +51,6 @@ const NavComponent = ({ currentUser, setCurrentUser }) => {
                 </Link>
               </li>
             )}
-
             {currentUser && (
               <li className="nav-item">
                 <Link onClick={handleLogout} className="nav-link" to="/">
@@ -60,7 +58,6 @@ const NavComponent = ({ currentUser, setCurrentUser }) => {
                 </Link>
               </li>
             )}
-
             {currentUser && (
               <li className="nav-item">
                 <Link className="nav-link" to="/profile">
@@ -68,7 +65,6 @@ const NavComponent = ({ currentUser, setCurrentUser }) => {
                 </Link>
               </li>
             )}
-
             {currentUser && (
               <li className="nav-item">
                 <Link className="nav-link" to="/house">
@@ -76,7 +72,6 @@ const NavComponent = ({ currentUser, setCurrentUser }) => {
                 </Link>
               </li>
             )}
-
             {currentUser && currentUser.user.role === "houseSeller" && (
               <li className="nav-item">
                 <Link className="nav-link" to="/postHouse">
@@ -84,7 +79,6 @@ const NavComponent = ({ currentUser, setCurrentUser }) => {
                 </Link>
               </li>
             )}
-
             {currentUser && currentUser.user.role === "houseBuyer" && (
               <li className="nav-item">
                 <Link className="nav-link" to="/appointment">
@@ -92,7 +86,7 @@ const NavComponent = ({ currentUser, setCurrentUser }) => {
                 </Link>
               </li>
             )}
-            {currentUser && currentUser.user.role === "houseBuyer" && (
+            {(!currentUser || currentUser.user.role === "houseBuyer") && (
               <li className="nav-item">
                 <Link className="nav-link" to="/search">
                   搜尋房屋

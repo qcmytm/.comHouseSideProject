@@ -4,16 +4,12 @@ import HouseService from "../services/house.service";
 
 const AppointmentComponent = ({ currentUser, setCurrentUser }) => {
   const navigate = useNavigate();
-  const handleTakeToLogin = () => {
-    navigate("/login");
-  };
+
   let [result, setResult] = useState(null);
 
   useEffect(() => {
-    let _id;
     if (currentUser) {
-      _id = currentUser.user._id;
-      if (currentUser.user.role == "houseBuyer") {
+      if (currentUser.user.role === "houseBuyer") {
         HouseService.getAllHouse()
           .then((data) => {
             setResult(data.data);
@@ -49,15 +45,15 @@ const AppointmentComponent = ({ currentUser, setCurrentUser }) => {
           </Link>
         </div>
       )}
-      {currentUser && currentUser.user.role == "houseSeller" && (
+      {currentUser && currentUser.user.role === "houseSeller" && (
         <div>
           <h1>只有houseBuyer才能夠預約鑑賞</h1>
         </div>
       )}
       {currentUser &&
-        currentUser.user.role == "houseBuyer" &&
+        currentUser.user.role === "houseBuyer" &&
         result &&
-        result.length != 0 && (
+        result.length !== 0 && (
           <div className="house">
             {result.map((house) => {
               return (
@@ -77,7 +73,7 @@ const AppointmentComponent = ({ currentUser, setCurrentUser }) => {
                         class="img-fluid"
                         alt="房屋照片"
                       />
-                    </div>{" "}
+                    </div>
                     <div>
                       <p>預約人數:{house.houseBuyerAppointment.length}人</p>
                       <p>物件價格:{house.price}(單位:萬元)</p>
@@ -87,14 +83,13 @@ const AppointmentComponent = ({ currentUser, setCurrentUser }) => {
                         {house.houseSeller.email}
                       </p>
                       <div className="d-flex justify-content-end ">
-                        <a
-                          href="#"
+                        <button
                           id={house._id}
                           className="card-text btn btn-primary "
                           onClick={handleAppointment}
                         >
                           預約鑑賞
-                        </a>
+                        </button>
                       </div>
                     </div>
                   </div>

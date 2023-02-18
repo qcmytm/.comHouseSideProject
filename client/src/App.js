@@ -23,7 +23,12 @@ function App() {
             <Layout currentUser={currentUser} setCurrentUser={setCurrentUser} />
           }
         >
-          <Route index element={<Home />} />
+          <Route
+            index
+            element={
+              <Home currentUser={currentUser} setCurrentUser={setCurrentUser} />
+            }
+          />
           <Route
             path="profile"
             element={

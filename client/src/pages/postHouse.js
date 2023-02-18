@@ -2,19 +2,16 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import HouseService from "../services/house.service";
 
-const PostHouseComponent = (props) => {
-  let { currentUser, setCurrentUser } = props;
-  let [title, setTitle] = useState("");
-  let [description, setDescription] = useState("");
-  let [image, setImage] = useState("");
-  let [image2, setImage2] = useState("");
-  let [image3, setImage3] = useState("");
-  let [price, setPrice] = useState(0);
-  let [message, setMessage] = useState("");
+const PostHouseComponent = ({ currentUser, setCurrentUser }) => {
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [image, setImage] = useState("");
+  const [image2, setImage2] = useState("");
+  const [image3, setImage3] = useState("");
+  const [price, setPrice] = useState(0);
+  const [message, setMessage] = useState("");
   const navigate = useNavigate();
-  const handleTakeToLogin = () => {
-    navigate("/login");
-  };
+
   const handleChangeTitle = (e) => {
     setTitle(e.target.value);
   };

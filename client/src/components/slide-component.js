@@ -27,9 +27,10 @@ const SlideComponent = () => {
     },
   ];
   const settings = {
+    fade: true,
     dots: true,
     infinite: true,
-    slidesToShow: 1,
+    slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
     speed: 3000,
@@ -42,7 +43,7 @@ const SlideComponent = () => {
         {Image.map((i) => {
           return (
             <div className="d-flex justify-content-center">
-              <img src={i.url} className="slideImg" alt="img" />
+              <img src={i.url} className="slideImg rounded-3" alt="img" />
             </div>
           );
         })}

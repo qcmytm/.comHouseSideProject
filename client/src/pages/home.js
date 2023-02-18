@@ -2,13 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import SlideComponent from "../components/slide-component";
 
-const HomeComponent = () => {
+const HomeComponent = ({ currentUser }) => {
   return (
     <main>
       <SlideComponent />
       <div className="container-xl py-4">
         <div className="p-5 mb-4 bg-light rounded-3 mainBG d-flex justify-content-center ">
-          <div className="pe-5  py-5">
+          <div className="pe-md-5 py-2 py-md-5">
             <h3 className=" fw-bold textShadow">透過.COM輕鬆找到目標客群</h3>
 
             <p className="pe-5 fs-4 textShadow">
@@ -36,9 +36,12 @@ const HomeComponent = () => {
                   className="btn  btn-outline-secondary rounded-pill"
                   type="button"
                 >
-                  <Link data-bs-toggle="modal" to="#exampleModalToggle">
-                    刊登物件
-                  </Link>
+                  {!currentUser && (
+                    <Link data-bs-toggle="modal" to="#exampleModalToggle">
+                      刊登物件
+                    </Link>
+                  )}
+                  {currentUser && <Link to="/postHouse">刊登物件</Link>}
                 </button>
               </div>
             </div>
@@ -55,9 +58,12 @@ const HomeComponent = () => {
                   className="btn btn-outline-light rounded-pill"
                   type="button"
                 >
-                  <Link data-bs-toggle="modal" to="#exampleModalToggle">
-                    立即尋找
-                  </Link>
+                  {!currentUser && (
+                    <Link data-bs-toggle="modal" to="#exampleModalToggle">
+                      立即預約
+                    </Link>
+                  )}
+                  {currentUser && <Link to="/appointment ">立即預約</Link>}
                 </button>
               </div>
             </div>

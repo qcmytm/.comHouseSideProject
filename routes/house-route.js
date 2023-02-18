@@ -16,18 +16,6 @@ router.get("/", async (req, res) => {
     return res.status(500).send(e);
   }
 });
-//用house名稱尋找house
-router.get("/findByName/:name", async (req, res) => {
-  let { name } = req.params;
-  try {
-    let houseFound = await House.find({ title: name })
-      .populate("houseSeller", ["username", "email"])
-      .exec();
-    return res.send(houseFound);
-  } catch (e) {
-    return res.status(500).send(e);
-  }
-});
 
 //用houseBuyer id來尋找houseBuyer預約鑑賞中的 house
 router.get("/houseBuyer/:_houseBuyer_id", async (req, res) => {

@@ -62,17 +62,9 @@ class HouseService {
 
   //用house名稱尋找 委賣物件 house
   getHouseByName(name) {
-    let token;
-    if (localStorage.getItem("user")) {
-      token = JSON.parse(localStorage.getItem("user")).token;
-    } else {
-      token = "";
-    }
-    return axios.get(API_URL + "/findByName/" + name, {
-      headers: {
-        Authorization: token,
-      },
-    });
+    return axios.get(
+      "https://comhouse.onrender.com/api/findHouseByName/" + name
+    );
   }
   //預約鑑賞
   appointment(_id) {

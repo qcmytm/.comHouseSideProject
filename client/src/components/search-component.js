@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import HouseService from "../services/house.service";
 const SearchComponent = ({ currentUser, setCurrentUser }) => {
   const navigate = useNavigate();
@@ -27,50 +27,46 @@ const SearchComponent = ({ currentUser, setCurrentUser }) => {
     form.children[0].value = "";
   };
   const handleAppointment = (e) => {
-    HouseService.appointment(e.target.id)
-      .then(() => {
-        window.alert("預約鑑賞成功!!將重新導向到房屋頁面.");
-        navigate("/house");
-      })
-      .catch((e) => {
-        window.alert(e.response.data);
-        setSearchResult(null);
-        setSearchInput("");
-        navigate("/search");
-      });
+    if (currentUser && currentUser.user.role === "houseBuyer") {
+      HouseService.appointment(e.target.id)
+        .then(() => {
+          window.alert("預約鑑賞成功!!將重新導向到房屋頁面.");
+          navigate("/house");
+        })
+        .catch((e) => {
+          window.alert(e.response.data);
+          setSearchResult(null);
+          setSearchInput("");
+          navigate("/search");
+        });
+    } else if (currentUser && currentUser.user.role === "houseSeller") {
+      window.alert("只有HouseBuyer才能預約鑑賞");
+    } else if (!currentUser) {
+      window.alert("登入使用者後才能預約鑑賞");
+    }
   };
   return (
     <div className="container-xl divContainer">
-      {!currentUser && (
-        <div>
-          <p className="fs-2">您必須先登入才能開始搜尋房屋</p>
-          <Link
-            className="btn btn-primary btn"
-            data-bs-toggle="modal"
-            to="#exampleModalToggle"
-          >
-            跳轉登入頁面
-          </Link>
-        </div>
-      )}
       {currentUser && currentUser.user.role === "houseSeller" && (
         <div>
           <h1>只有houseBuyer才能夠搜尋房屋</h1>
         </div>
       )}
-      {currentUser && currentUser.user.role === "houseBuyer" && (
+      {(!currentUser || currentUser.user.role === "houseBuyer") && (
         <div className="search input-group mb-3">
           <input
             type="text"
             className="form-control"
             onChange={handleChangeInput}
+            placeholder="仰星殿、勝美敦美、文華匯...etc"
           />
           <button onClick={handleSearch} className="btn btn-primary">
-            搜尋委賣物件
+            搜尋房屋
           </button>
         </div>
       )}
-      {currentUser && searchResult && searchResult.length !== 0 && (
+
+      {searchResult && searchResult.length !== 0 && (
         <div>
           <p>這是我們從伺服器返回的數據:</p>
           <div className="search">
@@ -94,14 +90,13 @@ const SearchComponent = ({ currentUser, setCurrentUser }) => {
                         {house.houseSeller.email}
                       </p>
                       <div className="d-flex justify-content-end ">
-                        <a
-                          href="#"
+                        <button
                           id={house._id}
                           className="card-text btn btn-primary "
                           onClick={handleAppointment}
                         >
                           預約鑑賞房屋
-                        </a>
+                        </button>
                       </div>
                     </div>
                   </div>
