@@ -1,4 +1,4 @@
-const router = require("express").Router()
+const router = require("express").Router();
 const House = require("../models").house;
 //用house名稱尋找house
 router.get("/:name", async (req, res) => {
