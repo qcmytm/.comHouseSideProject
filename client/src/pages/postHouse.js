@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import HouseService from "../services/house.service";
+import { useSpring, animated } from "react-spring";
 
 const PostHouseComponent = ({ currentUser, setCurrentUser }) => {
   const [title, setTitle] = useState("");
@@ -10,6 +11,11 @@ const PostHouseComponent = ({ currentUser, setCurrentUser }) => {
   const [image3, setImage3] = useState("");
   const [price, setPrice] = useState(0);
   const [message, setMessage] = useState("");
+  const [postHouseIn, setPostHouseIn] = useState(false);
+  const animation = useSpring({
+    opacity: postHouseIn ? 1 : 0,
+    config: { duration: 300 },
+  });
   const navigate = useNavigate();
 
   const handleChangeTitle = (e) => {
@@ -34,8 +40,12 @@ const PostHouseComponent = ({ currentUser, setCurrentUser }) => {
   const postHouse = () => {
     HouseService.post(title, description, image, image2, image3, price)
       .then(() => {
-        window.alert("新委賣物件已新增成功");
-        navigate("/house");
+        setPostHouseIn(true);
+        setMessage("");
+        setTimeout(() => {
+          setPostHouseIn(false);
+          navigate("/house");
+        }, 2000);
       })
       .catch((error) => {
         console.log(error.response);
@@ -68,6 +78,16 @@ const PostHouseComponent = ({ currentUser, setCurrentUser }) => {
             <div className="alert alert-warning" role="alert">
               {message}
             </div>
+          )}
+          {postHouseIn && (
+            <animated.div
+              className={`px-3 px-lg-5 alert popup ${
+                postHouseIn ? "active" : ""
+              }`}
+              style={animation}
+            >
+              <div className="px-md-5">新委賣物件已新增成功！</div>
+            </animated.div>
           )}
           <label for="exampleforTitle">物件標題：</label>
           <input

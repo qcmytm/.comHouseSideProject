@@ -1,12 +1,20 @@
 import React, { useState } from "react";
 import AuthService from "../services/auth.service";
+import { useSpring, animated } from "react-spring";
 
 const RegisterComponent = () => {
-  let [username, setUsername] = useState("");
-  let [email, setEmail] = useState("");
-  let [password, setPassword] = useState("");
-  let [role, setRole] = useState("");
-  let [message, setMessage] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [role, setRole] = useState("");
+  const [message, setMessage] = useState("");
+  const [registerIn, setRegisterIn] = useState(false);
+
+  const animation = useSpring({
+    opacity: registerIn ? 1 : 0,
+    transform: registerIn ? "translateY(0)" : "translateY(-100%)",
+    config: { duration: 300 },
+  });
   const handleNavigate = () => {
     const navigateButton = document.querySelector(".modal-footer .navigate");
     console.log(navigateButton);
@@ -28,13 +36,16 @@ const RegisterComponent = () => {
   const handleRegister = () => {
     AuthService.register(username, email, password, role)
       .then(() => {
-        window.alert("註冊成功.您現在將被導向到登入頁面");
-        handleNavigate();
-        setUsername("");
-        setEmail("");
-        setPassword("");
-        setRole("");
+        setRegisterIn(true);
         setMessage("");
+        setTimeout(() => {
+          setRegisterIn(false);
+          handleNavigate();
+          setUsername("");
+          setEmail("");
+          setPassword("");
+          setRole("");
+        }, 2000);
       })
       .catch((e) => {
         setMessage(e.response.data);
@@ -45,6 +56,11 @@ const RegisterComponent = () => {
     <div className="container-xl p-3">
       <div>
         {message && <div className="alert alert-danger">{message}</div>}
+        {registerIn && (
+          <animated.div className="alert down" style={animation}>
+            <div className="px-md-5">註冊成功.您現在將被導向到登入頁面</div>
+          </animated.div>
+        )}
         <div>
           <label htmlFor="username">用戶名稱:</label>
           <input

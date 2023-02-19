@@ -7,7 +7,26 @@
   padding: 3rem;
   min-height: 70vh;
 }
+.searchBG{
+  background-image:url("https://www.mirrormedia.com.tw/assets/images/20210218124538-0e5751c431efb3740db5367302f93786-tablet.jpg");
+background-size: cover;
+background-position: center;
+position: relative;
+z-index: 0;
+}
 
+.searchBG::before{
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.567)
+    /* 设置透明度 */
+}
 .slide {
 
   display: none;
@@ -28,7 +47,6 @@
 .mainBG {
   background-image: url("https://pic03.eapple.com.tw/yuanchu/about-01.jpg");
   background-size: cover;
-
   background-position: center;
   position: relative;
   z-index: 0;
@@ -117,4 +135,29 @@
     padding: 0 1.5rem;
     font-size: 1.5rem;
   }
+}
+
+.popup {
+  font-weight: bold;
+  position: fixed;
+  background-color: rgb(248, 241, 229);
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  display: none;
+  z-index: 5;
+}
+
+.popup.active {
+  display: block;
+}
+
+.down {
+  display: inline-block;
+  font-weight: bold;
+  background-color: rgb(248, 241, 229);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }

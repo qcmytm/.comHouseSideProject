@@ -8,7 +8,6 @@ import UserImg from "../assets/images/User.png";
 const NavComponent = ({ currentUser, setCurrentUser }) => {
   const handleLogout = () => {
     AuthService.logout(); //清空local storage
-    window.alert("登出成功!現在您會被導向到首頁");
     setCurrentUser(null);
   };
   return (

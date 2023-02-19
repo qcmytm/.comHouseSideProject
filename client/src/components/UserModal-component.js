@@ -3,8 +3,6 @@ import LoginComponent from "./login-component";
 import RegisterComponent from "./register-component";
 
 const UserModalComponent = ({ currentUser, setCurrentUser }) => {
-
-  
   return (
     <div>
       <div

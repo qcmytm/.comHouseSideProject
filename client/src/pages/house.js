@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-
+import { useSpring, animated } from "react-spring";
 import HouseService from "../services/house.service";
 
 const HouseComponent = ({ currentUser, setCurrentUser }) => {
-  let navigate = useNavigate();
-
-  const handleTakeToLogin = () => {
-    navigate("/login");
-  };
-  let [houseData, setHouseData] = useState(null);
-  let [deleteHouse, setDeleteHouse] = useState(0);
-  let [deleteAppointment, setDeleteAppointment] = useState(0);
+  const [houseData, setHouseData] = useState(null);
+  const [deleteHouse, setDeleteHouse] = useState(0);
+  const [deleteAppointment, setDeleteAppointment] = useState(0);
+  const [deleteIn, setDeleteIn] = useState(false);
+  const [message, setMessage] = useState("");
+  const animation = useSpring({
+    opacity: deleteIn ? 1 : 0,
+    config: { duration: 300 },
+  });
 
   useEffect(() => {
     let _id;
@@ -39,25 +40,59 @@ const HouseComponent = ({ currentUser, setCurrentUser }) => {
   const handleDelete = (e) => {
     HouseService.deleteObject(e.target.id)
       .then(() => {
-        window.alert("刪除物件成功!!將重新載入~");
-        setDeleteHouse(e.target.id);
+        setDeleteIn(true);
+        setTimeout(() => {
+          setDeleteIn(false);
+          setDeleteHouse(e.target.id);
+        }, 2000);
       })
       .catch((e) => {
-        window.alert(e.response.data);
+        setMessage(e.response.data);
+        setDeleteIn(true);
+        setTimeout(() => {
+          setDeleteIn(false);
+          setMessage("");
+        }, 2000);
       });
   };
   const handleDeleteAppointment = (e) => {
     HouseService.deleteAppointment(e.target.id)
       .then(() => {
-        window.alert("取消預約成功!!將重新載入~");
-        setDeleteAppointment(e.target.id);
+        setDeleteIn(true);
+        setTimeout(() => {
+          setDeleteIn(false);
+          setDeleteAppointment(e.target.id);
+        }, 2000);
       })
       .catch((e) => {
-        window.alert(e.response.data);
+        setMessage(e.response.data);
+        setDeleteIn(true);
+        setTimeout(() => {
+          setDeleteIn(false);
+          setMessage("");
+        }, 2000);
       });
   };
   return (
     <div className="container-xl divContainer">
+      {deleteIn && (
+        <animated.div
+          className={`px-3 px-lg-5 alert popup ${deleteIn ? "active" : ""}`}
+          style={animation}
+        >
+          {message && <div className="px-md-5">{message}</div>}
+          {!message &&
+            currentUser &&
+            currentUser.user.role === "houseSeller" && (
+              <div className="px-md-5">刪除物件成功!!將重新載入~</div>
+            )}
+          {!message &&
+            currentUser &&
+            currentUser.user.role === "houseBuyer" && (
+              <div className="px-md-5">取消預約成功!!將重新載入~</div>
+            )}
+        </animated.div>
+      )}
       {!currentUser && (
         <div>
           <p className="fs-2">您必須先登入才能看到委賣物件house</p>

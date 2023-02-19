@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSpring, animated } from "react-spring";
 import AuthService from "../services/auth.service";
 
 const LoginComponent = ({ setCurrentUser }) => {
@@ -7,7 +8,13 @@ const LoginComponent = ({ setCurrentUser }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  const animation = useSpring({
+    opacity: loggedIn ? 1 : 0,
+    transform: loggedIn ? "translateY(0)" : "translateY(-100%)",
+    config: { duration: 300 },
+  });
   const handleClose = () => {
     const closeButton = document.querySelector(".btn-close");
     closeButton.click();
@@ -17,12 +24,15 @@ const LoginComponent = ({ setCurrentUser }) => {
       let response = await AuthService.login(email, password);
       localStorage.setItem("user", JSON.stringify(response.data));
       setCurrentUser(AuthService.getCurrentUser());
-      setIsLoggedIn(true);
-      navigate("/profile");
-      handleClose();
-      setEmail("");
-      setPassword("");
+      setLoggedIn(true);
       setMessage("");
+      setTimeout(() => {
+        navigate("/profile");
+        handleClose();
+        setEmail("");
+        setPassword("");
+        setLoggedIn(false);
+      }, 2000);
     } catch (e) {
       setMessage(e.response.data);
     }
@@ -35,13 +45,13 @@ const LoginComponent = ({ setCurrentUser }) => {
   };
 
   return (
-    <div className="container-xl p-5">
+    <div className="container-xl p-md-5">
       <div>
         {message && <div className="alert alert-danger">{message}</div>}
-        {isLoggedIn && (
-          <div>
-            <p>Login successful!</p>
-          </div>
+        {loggedIn && (
+          <animated.div className="alert down" style={animation}>
+            <div className="px-md-5"> 登 錄 成 功 ！</div>
+          </animated.div>
         )}
         <div className="form-group">
           <label htmlFor="username">電子信箱：</label>

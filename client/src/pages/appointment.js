@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import HouseService from "../services/house.service";
+import { useSpring, animated } from "react-spring";
 
 const AppointmentComponent = ({ currentUser, setCurrentUser }) => {
   const navigate = useNavigate();
+  const [result, setResult] = useState(null);
+  const [appointmentIn, setAppointmentIn] = useState(false);
+  const [message, setMessage] = useState("");
 
-  let [result, setResult] = useState(null);
-
+  const animation = useSpring({
+    opacity: appointmentIn ? 1 : 0,
+    config: { duration: 300 },
+  });
   useEffect(() => {
     if (currentUser) {
       if (currentUser.user.role === "houseBuyer") {
@@ -24,15 +30,40 @@ const AppointmentComponent = ({ currentUser, setCurrentUser }) => {
   const handleAppointment = (e) => {
     HouseService.appointment(e.target.id)
       .then(() => {
-        window.alert("預約鑑賞成功!!將重新導向到房屋頁面.");
-        navigate("/house");
+        setAppointmentIn(true);
+        setTimeout(() => {
+          setAppointmentIn(false);
+          navigate("/house");
+        }, 2000);
       })
       .catch((e) => {
-        window.alert(e.response.data);
+        setMessage(e.response.data);
+        setAppointmentIn(true);
+        setTimeout(() => {
+          setAppointmentIn(false);
+          setMessage("");
+        }, 2000);
       });
   };
   return (
     <div className="container-xl divContainer">
+      {appointmentIn && (
+        <animated.div
+          className={`px-3 px-lg-5 alert popup ${
+            appointmentIn ? "active" : ""
+          }`}
+          style={animation}
+        >
+          {message && <div className="px-md-5">{message}</div>}
+          {!message &&
+            currentUser &&
+            currentUser.user.role === "houseBuyer" && (
+              <div className="px-md-5">
+                預約鑑賞成功!!將重新導向到房屋頁面！
+              </div>
+            )}
+        </animated.div>
+      )}
       {!currentUser && (
         <div>
           <p className="fs-2">您必須先登入才能開始預約鑑賞房屋</p>
