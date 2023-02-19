@@ -10,13 +10,13 @@ Node(.js) — the premier JavaScript web server（後端伺服器）<br/>
 <img src="https://webimages.mongodb.com/_com_assets/cms/mern-stack-b9q1kbudz0.png?auto=format%2Ccompress"/><br/>
 專案名為.comHouse房屋，概要說明如下:<br/>
 <br/>
-1.註冊與登入功能，需要登入使用者才能使用網站功能。<br/>
+1.註冊與登入功能，需要登入使用者才能使用網站功能，或是訪客可以搜尋房屋瀏覽但無法預約鑑賞。<br/>
 2.註冊使用者須選擇身分類別:HouseBuyer或HouseSeller。<br/>
 <br/>
 3.身份為Buyer:<br/>
   -可以任意瀏覽、查詢房屋物件，並對感興趣的房屋物件按<預約鑑賞房屋>，委賣Seller會收到通知並依預約順序跟Buyer確認鑑賞時間細節，<br/>
   -房屋物件中也提供委賣Seller聯繫方式如有任何疑問也可以請教。<br/>
-  -House物件頁面:提供Buyer<預約鑑賞中>的房屋物件以供Buyer確認，如有任何異動此頁面也提供<取消預約>服務。<br/>
+  -House物件頁面:提供Buyer<已預約鑑賞>的房屋物件以供Buyer確認，如有任何異動此頁面也提供<取消預約>服務。<br/>
   <br/>
 
 4.身份為Seller:<br/>
@@ -35,4 +35,5 @@ Node(.js) — the premier JavaScript web server（後端伺服器）<br/>
 因使用render免費託管服務,平時無request時會處於待機模式,點擊網站進入時server需運行一段時間重啟才能run server,謝謝等候
 <h3> render託管服務,  <a href="https://comhouse.onrender.com/">.COM網站頁面</a> </h3>
 
-![ezgif com-crop](https://user-images.githubusercontent.com/107973729/218757231-4e484d20-4341-4836-91a3-460d6f925269.gif)
+![ezgif com-crop](https://user-images.githubusercontent.com/107973729/219956731-f35a4f6b-d696-466f-aad7-5df40c94ecfa.gif)
+
